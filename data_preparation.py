@@ -1,5 +1,6 @@
 import os
 import pandas as pd
+from sklearn.cross_validation import train_test_split
 
 datadir = os.path.join(os.path.realpath('.'), 'data')
 hca = pd.read_csv(os.path.join(datadir, 'ss15hca.csv'))
@@ -136,3 +137,15 @@ for index, dataset in enumerate(datasets):
     print 'Generating dataset {} with shape {}'.format(filenames[index], dataset.shape)
 
     dataset.to_csv(filenames[index], index=False)
+
+    if index == 3:
+
+        print 'Generating training and test splits:'
+        df_train, df_test = train_test_split(dataset, train_size=0.7)
+
+        print 'Full dataset shape: {}'.format(dataset.shape)
+        print 'Training dataset shape: {}'.format(df_train.shape)
+        print 'Test dataset shape: {}'.format(df_test.shape)
+
+        df_train.to_csv('train_data.csv', index=False)
+        df_test.to_csv('test_data.csv', index=False)

@@ -54,7 +54,7 @@ for index, (datafile, classifier) in enumerate(itertools.product(datafiles, clas
 
     results.loc[index, 'dataset'] = name_of_dataset
     results.loc[index, 'classifier'] = classifier.__class__.__name__
-    
+
     for i, scr in enumerate(score):
         results.loc[index, 'score{}'.format(i)] = scr
 

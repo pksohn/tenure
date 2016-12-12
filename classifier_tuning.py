@@ -4,7 +4,7 @@ from scipy.stats import randint
 from sklearn.grid_search import RandomizedSearchCV
 
 decision_tree_params = {
-    "max_depth": [3, None],
+    "max_depth": randint(2, 10),
     "max_features": randint(1, 11),
     "min_samples_split": randint(1, 11),
     "min_samples_leaf": randint(1, 11),
@@ -14,7 +14,6 @@ decision_tree_params = {
 svc_params = {
     "C": np.linspace(0.1, 2, 20),
     "loss": ['hinge', 'squared_hinge']
-    # "dual": [True, False]
 }
 
 kneighbors_params = {
